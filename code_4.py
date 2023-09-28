@@ -15,7 +15,7 @@ def get_big_mac_price_by_country(country_code):
     return round(query_ret['dollar_price'].mean(),2)
 
 def get_the_cheapest_big_mac_price_by_year(year):
-    query_date = f"(date >= '{year}-01-01' and date <= '{year+22}-12-31' and iso_a3 == 'IND')"
+    query_date = f"(date >= '{year}-01-01' and date <= '{year+22}-12-31' and iso_a3 == 'MYS')"
     query_ind = df.query(query_date)
     query_min = query_ind['dollar_price'].idxmin()
     result = query_ind.loc[query_min]
@@ -25,7 +25,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
     
 
 def get_the_most_expensive_big_mac_price_by_year(year):
-    query_date = f"(date >= '{year}-01-01' and date <= '{year+22}-12-31' and iso_a3 == 'NOR')"
+    query_date = f"(date >= '{year}-01-01' and date <= '{year+22}-12-31' and iso_a3 == 'CHE')"
     query_ind = df.query(query_date)
     query_max = query_ind['dollar_price'].idxmax()
     result = query_ind.loc[query_max]
@@ -33,7 +33,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     return result_text
 
 if __name__ == "__main__":
-    print(get_big_mac_price_by_year(2022,"arg"))
+    print(get_big_mac_price_by_year(2009,'mex'))
     print(get_big_mac_price_by_country('arg'))
     print(get_the_cheapest_big_mac_price_by_year(2012))
     print(get_the_most_expensive_big_mac_price_by_year(2012))
