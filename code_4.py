@@ -19,7 +19,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
     query_ind = df.query(query_date)
     query_min = query_ind['dollar_price'].idxmin()
     result = query_ind.loc[query_min]
-    result_text = f"{result['name']}({result['iso_a3']}): {round(result['dollar_price'],2)}"
+    result_text = f"{result['name']}({result['iso_a3']}): ${round(result['dollar_price'],2)}"
     return result_text
 
     
@@ -29,7 +29,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     query_ind = df.query(query_date)
     query_max = query_ind['dollar_price'].idxmax()
     result = query_ind.loc[query_max]
-    result_text = f"{result['name']}({result['iso_a3']}): {round(result['dollar_price'],2)}"
+    result_text = f"{result['name']}({result['iso_a3']}): ${round(result['dollar_price'],2)}"
     return result_text
 
 if __name__ == "__main__":
